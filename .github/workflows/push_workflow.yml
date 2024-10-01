@@ -1,0 +1,20 @@
+name: Workflow push
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout du projet
+        uses: actions/checkout@v4
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin' 
+          java-version: '17'
+
+      - name: Installation des dépendances
+        run: mvn install
+
+      - name: Build de l'application
+        run: mvn package
