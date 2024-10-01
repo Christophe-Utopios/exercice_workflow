@@ -13,8 +13,20 @@ jobs:
           distribution: 'temurin' 
           java-version: '17'
 
+      - name: mise en cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+
       - name: Installation des dépendances
         run: mvn install
 
       - name: Build de l'application
         run: mvn package
+
+      - name: Upload artefact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build_app
+          path: target/*.jar
