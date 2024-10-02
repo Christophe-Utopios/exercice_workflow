@@ -4,8 +4,8 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     env:
-      - USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-      - PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+      USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
     steps:
       - name: checkout
         uses: actions/checkout@v4
